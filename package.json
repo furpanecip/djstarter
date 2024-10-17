@@ -4,5 +4,8 @@
   },
   "scripts": {
     "dev": "npx tailwindcss -i ./core/static/src/input.css -o ./core/static/src/output.css --watch"
+  },
+  "dependencies": {
+    "flowbite": "^2.5.2"
   }
 }
