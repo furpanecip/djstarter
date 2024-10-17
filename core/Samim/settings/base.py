@@ -33,12 +33,15 @@ DJANGO_APPS = [
 SITE_ID = 1
 
 THIR_PARTY_APPS = [
-    "compressor"
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    "compressor",
 ]
 
 LOCAL_APPS = [
     "tatbikat.mustahdimin",
-    
+    "tatbikat.idare"
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIR_PARTY_APPS + LOCAL_APPS
@@ -51,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "Samim.urls"
@@ -78,6 +82,19 @@ WSGI_APPLICATION = "Samim.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 AUTH_USER_MODEL = "mustahdimin.Mustahdim"
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+LOGIN_REDIRECT_URL = '/dashboard/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
