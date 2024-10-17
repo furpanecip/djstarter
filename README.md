@@ -1,0 +1,1 @@
+işte budur miftahı genci kadim.
